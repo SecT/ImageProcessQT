@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>snowflake01.jpg</file>
+        <file>snowflake02.jpg</file>
+    </qresource>
+</RCC>
