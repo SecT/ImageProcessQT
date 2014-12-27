@@ -190,3 +190,15 @@ void blur(QImage &image)
     delete[] mask;
 
 }
+
+
+void rotate(QImage &image, int angle)
+{
+
+    QTransform transformMatrix;
+    transformMatrix.rotate(angle);
+
+    image = image.transformed(transformMatrix);
+
+
+}

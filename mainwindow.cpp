@@ -164,3 +164,23 @@ void MainWindow::on_invertColorsButton_clicked()
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
+
+void MainWindow::on_rotateRightButton_clicked()
+{
+    QImage imageFromLabel;
+    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    rotate(imageFromLabel, 90);
+
+    ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}
+
+void MainWindow::on_rotateLeftButton_clicked()
+{
+    QImage imageFromLabel;
+    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    rotate(imageFromLabel, -90);
+
+    ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}

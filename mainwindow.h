@@ -59,6 +59,10 @@ private slots:
 
     void on_invertColorsButton_clicked();
 
+    void on_rotateRightButton_clicked();
+
+    void on_rotateLeftButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
