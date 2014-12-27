@@ -15,7 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     BaseImagePosY = ui->ImageLabel->geometry().y();
     BaseImageHeight = ui->ImageLabel->height();
 
+    ui->horizontalSlider->setMaximum(ui->ImageLabel->height());
     ui->horizontalSlider->setValue(ui->ImageLabel->height());
+
 
     ImageBackup = ui->ImageLabel->pixmap()->toImage();
 }
