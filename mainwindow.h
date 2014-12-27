@@ -56,6 +56,8 @@ private slots:
 
     void on_blurButton_clicked();
 
+    void on_invertColorsButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 

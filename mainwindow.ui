@@ -198,6 +198,19 @@
      <string>Blur</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="invertColorsButton">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>110</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Invert Colors</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

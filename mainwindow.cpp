@@ -151,3 +151,13 @@ void MainWindow::on_blurButton_clicked()
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
+
+void MainWindow::on_invertColorsButton_clicked()
+{
+    QImage imageFromLabel;
+    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    invertColors(imageFromLabel);
+
+     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}

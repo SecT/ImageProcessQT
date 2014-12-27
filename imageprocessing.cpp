@@ -14,6 +14,20 @@ void convertToGreyscale(QImage& imageFromLabel)
         }
 }
 
+void invertColors(QImage &image)
+{
+    QColor oldColor;
+
+    for (int x = 0; x < image.width(); ++x) {
+        for (int y = 0; y < image.height(); ++y) {
+            oldColor = QColor(image.pixel(x,y));
+
+            image.setPixel(x,y,qRgb(255-oldColor.red(), 255- oldColor.green(), 255 - oldColor.blue()));
+        }
+    }
+
+}
+
 void changeBrigthness(QImage &imageFromLabel, int delta = 0)
 {
     QColor oldColor;
