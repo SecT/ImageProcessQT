@@ -45,8 +45,8 @@ void MainWindow::on_horizontalSlider_valueChanged(int newSliderValue)
 
     //move the center of the label
 
-    ui->ImageLabel->setGeometry(BaseImagePosX + (BaseImageHeight - newSliderValue) / 2,
-                                BaseImagePosY + (BaseImageHeight - newSliderValue) / 2,
+    ui->ImageLabel->setGeometry(BaseImagePosX+(BaseImageHeight-newSliderValue)/2,
+                                BaseImagePosY+(BaseImageHeight-newSliderValue)/2,
                                 newSliderValue, newSliderValue);
     ui->ImageLabel->updateGeometry();
 
@@ -81,7 +81,7 @@ void MainWindow::on_openImageButton_clicked()
 
 void MainWindow::on_saveImageButton_clicked()
 {
-    QString filename = QFileDialog::getSaveFileName(this, tr("Save image"), "C://");
+    QString filename = QFileDialog::getSaveFileName(this,tr("Save image"), "C://");
 
     QImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
