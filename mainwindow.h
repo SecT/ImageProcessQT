@@ -69,6 +69,14 @@ private slots:
 
     void on_rotateLeftButton_clicked();
 
+    //void on_redChannelButton_toggled(bool checked);
+
+    void on_redChannelBox_stateChanged(int arg1);
+
+    void on_greenChannelBox_stateChanged(int arg1);
+
+    void on_blueChannelBox_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 

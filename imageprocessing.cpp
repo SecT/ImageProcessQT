@@ -202,3 +202,43 @@ void rotate(QImage &image, int angle)
 
 
 }
+
+
+void filterOutColor(QImage &image, short colorToFilter)
+{
+
+    QColor oldColor;
+    int r=0;
+    int g=0;
+    int b=0;
+
+
+    for (int x = 0; x < image.width(); ++x)
+    {
+        for (int y = 0; y < image.height(); ++y)
+        {
+
+            oldColor = QColor(image.pixel(x, y));
+            r = oldColor.red();
+            g = oldColor.green();
+            b = oldColor.blue();
+
+
+            switch (colorToFilter) {
+            case 0:
+                r = 0;
+                break;
+            case 1:
+                g = 0;
+            case 2:
+                b = 0;
+            default:
+                break;
+            }
+
+            image.setPixel(x, y, qRgb(r, g, b));
+        }
+
+    }
+
+}

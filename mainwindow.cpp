@@ -35,8 +35,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::mouse_current_pos()
 {
-//    ui->lineEdit_2->setText(QString("X: %1, Y: %2").arg(ui->ImageLabel->CurrentMouseX)
-//                            .arg(ui->ImageLabel->CurrentMouseY));
+    //    ui->lineEdit_2->setText(QString("X: %1, Y: %2").arg(ui->ImageLabel->CurrentMouseX)
+    //                            .arg(ui->ImageLabel->CurrentMouseY));
 }
 
 void MainWindow::mouse_pressed()
@@ -85,10 +85,10 @@ void MainWindow::on_horizontalSlider_valueChanged(int newSliderValue)
 void MainWindow::on_openImageButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this,
-                       tr("Open image"),
-                       "C://",
-                       "All files (*.*);;Images(*.jpg *.gif *.png *.bmp)"
-                                                   );
+                                                    tr("Open image"),
+                                                    "C://",
+                                                    "All files (*.*);;Images(*.jpg *.gif *.png *.bmp)"
+                                                    );
 
     if(filename.isEmpty())
         return;
@@ -155,6 +155,10 @@ void MainWindow::on_decreaseBrightnessButton_clicked()
 void MainWindow::on_resetImageButton_clicked()
 {
     ui->ImageLabel->setPixmap(QPixmap::fromImage(ImageBackup));
+
+    ui->redChannelBox->setChecked(true);
+    ui->greenChannelBox->setChecked(true);
+    ui->blueChannelBox->setChecked(true);
 }
 
 void MainWindow::on_sharpenButton_clicked()
@@ -206,6 +210,46 @@ void MainWindow::on_rotateLeftButton_clicked()
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     rotate(imageFromLabel, -90);
+
+    ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}
+
+
+void MainWindow::on_redChannelBox_stateChanged(int state)
+{
+    QImage imageFromLabel;
+    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    if(state == Qt::Unchecked)
+    {
+        filterOutColor(imageFromLabel,0);
+    }
+
+    ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}
+
+void MainWindow::on_greenChannelBox_stateChanged(int state)
+{
+    QImage imageFromLabel;
+    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    if(state == Qt::Unchecked)
+    {
+        filterOutColor(imageFromLabel,1);
+    }
+
+    ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}
+
+void MainWindow::on_blueChannelBox_stateChanged(int state)
+{
+    QImage imageFromLabel;
+    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    if(state == Qt::Unchecked)
+    {
+        filterOutColor(imageFromLabel,2);
+    }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
