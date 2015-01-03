@@ -3,6 +3,8 @@
 #include "QFileDialog"
 
 #include "imageprocessing.h"
+#include <QPainter>
+
 
 #include "myqlabel.h"
 
@@ -37,12 +39,29 @@ void MainWindow::mouse_current_pos()
 {
 //    ui->lineEdit_2->setText(QString("X: %1, Y: %2").arg(ui->ImageLabel->CurrentMouseX)
 //                            .arg(ui->ImageLabel->CurrentMouseY));
+
+
+
 }
 
 void MainWindow::mouse_pressed()
 {
     ui->lineEdit_2->setText(QString("X: %1, Y: %2").arg(ui->ImageLabel->ClickX)
                             .arg(ui->ImageLabel->ClickY));
+
+    if(!ui->ImageLabel->isFirstClick){
+
+
+    QRectF rectangle(QPointF(ui->ImageLabel->ClickX, ui->ImageLabel->ClickY),
+                     QPointF(ui->ImageLabel->ClickX_2, ui->ImageLabel->ClickY_2));
+
+    QImage ImageFromLabel = ui->ImageLabel->pixmap()->toImage();
+
+    QPainter painter(&ImageFromLabel);
+    painter.drawRect(rectangle);
+
+    ui->ImageLabel->setPixmap(QPixmap::fromImage(ImageFromLabel));
+    }
 }
 
 void MainWindow::mouse_left()

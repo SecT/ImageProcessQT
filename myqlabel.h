@@ -21,8 +21,9 @@ public:
 
 
 
-    int ClickX,ClickY;
+    int ClickX,ClickY, ClickX_2, ClickY_2;
     int CurrentMouseX,CurrentMouseY;
+    bool isFirstClick;
 
 signals:
     void Mouse_Pressed();

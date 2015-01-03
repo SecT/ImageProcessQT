@@ -2,12 +2,12 @@
 
 myQLabel::myQLabel()
 {
-
+    isFirstClick = false;
 }
 
 myQLabel::myQLabel(QWidget *parent):QLabel(parent)
 {
-
+    isFirstClick = false;
 }
 
 myQLabel::~myQLabel()
@@ -25,8 +25,20 @@ void myQLabel::mouseMoveEvent(QMouseEvent *ev)
 
 void myQLabel::mousePressEvent(QMouseEvent *ev)
 {
-    this->ClickX = ev->x();
-    this->ClickY = ev->y();
+
+
+
+    if(!isFirstClick){
+        this->ClickX = ev->x();
+        this->ClickY = ev->y();
+    }
+    else
+    {
+        this->ClickX_2 = ev->x();
+        this->ClickY_2 = ev->y();
+    }
+
+    isFirstClick = !isFirstClick;
     emit Mouse_Pressed();
 }
 
