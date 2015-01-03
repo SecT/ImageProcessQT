@@ -222,7 +222,7 @@ void MainWindow::on_redChannelBox_stateChanged(int state)
 
     if(state == Qt::Unchecked)
     {
-        filterOutColor(imageFromLabel,0);
+        filterOutColor(imageFromLabel,Qt::red);
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
@@ -235,7 +235,7 @@ void MainWindow::on_greenChannelBox_stateChanged(int state)
 
     if(state == Qt::Unchecked)
     {
-        filterOutColor(imageFromLabel,1);
+        filterOutColor(imageFromLabel,Qt::green);
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
@@ -248,7 +248,7 @@ void MainWindow::on_blueChannelBox_stateChanged(int state)
 
     if(state == Qt::Unchecked)
     {
-        filterOutColor(imageFromLabel,2);
+        filterOutColor(imageFromLabel,Qt::blue);
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));

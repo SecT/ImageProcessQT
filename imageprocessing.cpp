@@ -204,7 +204,7 @@ void rotate(QImage &image, int angle)
 }
 
 
-void filterOutColor(QImage &image, short colorToFilter)
+void filterOutColor(QImage &image, int colorToFilter)
 {
 
     QColor oldColor;
@@ -225,12 +225,12 @@ void filterOutColor(QImage &image, short colorToFilter)
 
 
             switch (colorToFilter) {
-            case 0:
+            case Qt::red:
                 r = 0;
                 break;
-            case 1:
+            case Qt::green:
                 g = 0;
-            case 2:
+            case Qt::blue:
                 b = 0;
             default:
                 break;
