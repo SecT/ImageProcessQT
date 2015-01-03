@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    imageprocessing.cpp
+    imageprocessing.cpp \
+    myqlabel.cpp
 
 HEADERS  += mainwindow.h \
-    imageprocessing.h
+    imageprocessing.h \
+    myqlabel.h
 
 FORMS    += mainwindow.ui
 

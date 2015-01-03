@@ -50,7 +50,7 @@
      <string>Clear</string>
     </property>
    </widget>
-   <widget class="QLabel" name="ImageLabel">
+   <widget class="myQLabel" name="ImageLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -243,6 +243,16 @@
      <string>Rotate Left</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>80</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -277,6 +287,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>myQLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">myqlabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="images.qrc"/>
  </resources>

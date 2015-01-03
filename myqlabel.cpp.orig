@@ -1,0 +1,27 @@
+#include "myqlabel.h"
+
+myQLabel::myQLabel()
+{
+
+}
+
+myQLabel::myQLabel(QWidget *parent) :QLabel(parent)
+{
+
+}
+
+myQLabel::~myQLabel()
+{
+
+}
+
+void myQLabel::mouseMoveEvent(QMouseEvent *ev)
+{this->x = ev->x;
+    this->y  = ev->y;
+
+emit Mouse_Pos();
+
+}
+
+
+

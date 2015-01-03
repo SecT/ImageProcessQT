@@ -4,11 +4,17 @@
 
 #include "imageprocessing.h"
 
+#include "myqlabel.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->ImageLabel, SIGNAL(Mouse_Pos()      ),  this,      SLOT(mouse_current_pos() ) );
+    connect(ui->ImageLabel, SIGNAL(Mouse_Pressed()  ),  this,      SLOT(mouse_pressed() )     );
+    connect(ui->ImageLabel, SIGNAL(Mouse_Left()  ),  this,         SLOT(mouse_left()     ));
 
     //Initial geometry for image
     BaseImagePosX = ui->ImageLabel->geometry().x();
@@ -25,6 +31,23 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::mouse_current_pos()
+{
+//    ui->lineEdit_2->setText(QString("X: %1, Y: %2").arg(ui->ImageLabel->CurrentMouseX)
+//                            .arg(ui->ImageLabel->CurrentMouseY));
+}
+
+void MainWindow::mouse_pressed()
+{
+    ui->lineEdit_2->setText(QString("X: %1, Y: %2").arg(ui->ImageLabel->ClickX)
+                            .arg(ui->ImageLabel->ClickY));
+}
+
+void MainWindow::mouse_left()
+{
+
 }
 
 void MainWindow::on_pushButton_clicked()

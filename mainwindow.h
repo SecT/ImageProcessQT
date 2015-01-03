@@ -27,6 +27,12 @@ public:
 
 
 private slots:
+
+    void mouse_current_pos();
+
+    void mouse_pressed();
+    void mouse_left();
+
     void on_pushButton_clicked();
 
     void on_clearButton_clicked();
