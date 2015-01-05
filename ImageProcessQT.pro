@@ -8,7 +8,10 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = TestProject001
+TARGET = ImageProcessQT
+TRANSLATIONS = $${TARGET}_el_GR.ts $${TARGET}_de.ts $${TARGET}_pl.ts
+CODECFORSRC = UTF-8
+
 TEMPLATE = app
 
 
@@ -24,4 +27,11 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    images.qrc
+    images.qrc \
+    translations.qrc
+
+DISTFILES +=
+
+win32 {
+    copyfiles.commands = @call copy ..\\$${TARGET}\\*.qm $${DESTDIR}\\
+}

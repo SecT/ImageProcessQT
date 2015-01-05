@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
     connect(ui->ImageLabel, SIGNAL(Mouse_Pos()      ),  this,      SLOT(mouse_current_pos() ) );
     connect(ui->ImageLabel, SIGNAL(Mouse_Pressed()  ),  this,      SLOT(mouse_pressed() )     );
     connect(ui->ImageLabel, SIGNAL(Mouse_Left()  ),  this,         SLOT(mouse_left()     ));

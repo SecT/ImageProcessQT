@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/translations">
+        <file>ImageProcessQT_de.ts</file>
+        <file>ImageProcessQT_pl.ts</file>
+    </qresource>
+</RCC>
