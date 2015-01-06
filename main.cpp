@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     qtTranslator.load("ImageProcessQT_pl", a.applicationDirPath());
     a.installTranslator(&qtTranslator);
 
+
     MainWindow w;
     w.show();
 

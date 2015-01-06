@@ -5,6 +5,7 @@
 #include "imageprocessing.h"
 
 #include "myqlabel.h"
+#include <QSettings>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -28,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ImageBackup = ui->ImageLabel->pixmap()->toImage();
+
+    loadSettings();
 }
 
 MainWindow::~MainWindow()
@@ -254,4 +257,28 @@ void MainWindow::on_blueChannelBox_stateChanged(int state)
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
+}
+
+void MainWindow::saveSettings()
+{
+    QSettings settings( QApplication::applicationDirPath()+"\\settings.ini",QSettings::IniFormat);
+
+    if(!settings.contains("translationsPath"))
+    {
+        settings.setValue("translationsPath",QApplication::applicationDirPath());
+
+    }
+}
+
+void MainWindow::loadSettings()
+{
+    QSettings settings( QApplication::applicationDirPath()+"\\settings.ini",QSettings::IniFormat);
+
+
+    //if first time running program
+    saveSettings();
+
+    translationsDir = settings.value("translationsPath",QApplication::applicationDirPath()).toString();
+
+
 }

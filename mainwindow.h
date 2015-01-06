@@ -21,6 +21,8 @@ public:
 
     QImage ImageBackup;
 
+
+
     ~MainWindow();
 
 //    void convertToGreyscale(QColor oldColor, QImage imageFromLabel);
@@ -80,6 +82,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    QString translationsDir;
+
+    void saveSettings();
+    void loadSettings();
 
 };
 
