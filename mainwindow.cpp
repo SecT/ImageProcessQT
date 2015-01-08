@@ -2,9 +2,12 @@
 #include "ui_mainwindow.h"
 #include "QFileDialog"
 
-#include "imageprocessing.h"
+//#include "imageprocessing.h"
+#include "myqimage.h"
 
 #include "myqlabel.h"
+
+
 #include <QSettings>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -113,8 +116,7 @@ void MainWindow::on_saveImageButton_clicked()
 {
     QString filename = QFileDialog::getSaveFileName(this, tr("Save image"), "C://");
 
-    QImage imageFromLabel;
-    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+    QImage imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     imageFromLabel.save(filename);
 }
@@ -123,10 +125,9 @@ void MainWindow::on_saveImageButton_clicked()
 
 void MainWindow::on_greyscaleButton_clicked()
 {
-    QImage imageFromLabel;
-    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+    myQImage imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
-    convertToGreyscale(imageFromLabel);
+    imageFromLabel.convertToGreyscale();
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
@@ -134,24 +135,24 @@ void MainWindow::on_greyscaleButton_clicked()
 
 void MainWindow::on_IncreaseBrightnessButton_clicked()
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     int delta = 10;
 
-    changeBrigthness(imageFromLabel, delta);
+    imageFromLabel.changeBrigthness(delta);
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
 
 void MainWindow::on_decreaseBrightnessButton_clicked()
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     int delta = -10;
 
-    changeBrigthness(imageFromLabel, delta);
+    imageFromLabel.changeBrigthness(delta);
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
@@ -168,10 +169,9 @@ void MainWindow::on_resetImageButton_clicked()
 
 void MainWindow::on_sharpenButton_clicked()
 {
-    QImage  imageFromLabel;
-    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+    myQImage  imageFromLabel(ui->ImageLabel->pixmap()->toImage());
 
-    sharpen(imageFromLabel);
+    imageFromLabel.sharpen();
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
@@ -181,40 +181,39 @@ void MainWindow::on_blurButton_clicked()
 
 
 {
-    QImage imageFromLabel;
-    imageFromLabel = ui->ImageLabel->pixmap()->toImage();
+    myQImage imageFromLabel(ui->ImageLabel->pixmap()->toImage());
 
-    blur(imageFromLabel);
+    imageFromLabel.blur();
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
 
 void MainWindow::on_invertColorsButton_clicked()
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
-    invertColors(imageFromLabel);
+    imageFromLabel.invertColors();
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
 
 void MainWindow::on_rotateRightButton_clicked()
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
-    rotate(imageFromLabel, 90);
+    imageFromLabel.rotate(90);
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
 
 void MainWindow::on_rotateLeftButton_clicked()
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
-    rotate(imageFromLabel, -90);
+    imageFromLabel.rotate( -90);
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
 }
@@ -222,12 +221,12 @@ void MainWindow::on_rotateLeftButton_clicked()
 
 void MainWindow::on_redChannelBox_stateChanged(int state)
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     if(state == Qt::Unchecked)
     {
-        filterOutColor(imageFromLabel,Qt::red);
+        imageFromLabel.filterOutColor(Qt::red);
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
@@ -235,12 +234,12 @@ void MainWindow::on_redChannelBox_stateChanged(int state)
 
 void MainWindow::on_greenChannelBox_stateChanged(int state)
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     if(state == Qt::Unchecked)
     {
-        filterOutColor(imageFromLabel,Qt::green);
+        imageFromLabel.filterOutColor(Qt::green);
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));
@@ -248,12 +247,12 @@ void MainWindow::on_greenChannelBox_stateChanged(int state)
 
 void MainWindow::on_blueChannelBox_stateChanged(int state)
 {
-    QImage imageFromLabel;
+    myQImage imageFromLabel;
     imageFromLabel = ui->ImageLabel->pixmap()->toImage();
 
     if(state == Qt::Unchecked)
     {
-        filterOutColor(imageFromLabel,Qt::blue);
+        imageFromLabel.filterOutColor(Qt::blue);
     }
 
     ui->ImageLabel->setPixmap(QPixmap::fromImage(imageFromLabel));

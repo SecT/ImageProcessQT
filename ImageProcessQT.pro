@@ -18,11 +18,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     imageprocessing.cpp \
-    myqlabel.cpp
+    myqlabel.cpp \
+    myqimage.cpp
 
 HEADERS  += mainwindow.h \
     imageprocessing.h \
-    myqlabel.h
+    myqlabel.h \
+    myqimage.h
 
 FORMS    += mainwindow.ui
 
