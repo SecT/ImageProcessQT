@@ -6,7 +6,7 @@ myQImage::myQImage()
 
 }
 
-myQImage::myQImage(QImage image)
+myQImage::myQImage(QImage image):QImage(image)
 {
 
 }
